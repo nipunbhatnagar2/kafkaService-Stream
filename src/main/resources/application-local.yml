@@ -1,0 +1,26 @@
+consumer.enabled: true
+
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 127.0.0.1:9092
+      bindings:
+        input_test:
+          destination: testtopic
+          contentType: application/json
+          group: test
+          consumer:
+            maxAttempts: 1
+            backOffInitialInterval: 3000
+            backOffMaxInterval: 30000
+            backOffMultiplier: 1.0
+        output_test:
+          destination: testtopic
+          contentType: application/json
+          group: test
+#        error:
+#          destination: errors
+#          contentType: application/json
+#          group: test
